@@ -1,4 +1,7 @@
-/* Individual Cards for the game of war */
+/* Individual Cards for the game of war 
+Dallas Daniel
+CS 110
+*/
 import java.io.File;
 import java.io.IOException;
 

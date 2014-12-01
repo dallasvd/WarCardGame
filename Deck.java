@@ -1,4 +1,5 @@
 // Creating a new deck of cards for each game of war
+// Each new Deck is shuffled
 import java.io.IOException;
 import java.util.Random;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class Deck
    
    public Deck() throws IOException
    {
+      // Initialize variables and create an array list that will have 52 cards
       cards = new ArrayList<Card>();
       int index1, index2;
       Random generator = new Random();

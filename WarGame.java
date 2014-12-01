@@ -1,7 +1,9 @@
 /*
+War Card Game
 Created by Dallas Daniel
 Aces low
-actual part of the game 
+actual part of the game (the core)
+CS 110
 */
 import java.io.IOException;
 import java.util.ArrayList;
@@ -144,7 +146,7 @@ public class WarGame implements WarGameInterface
    {
       if (s.equals("you"))
       {
-         JOptionPane.showMessageDialog(null, "You lose war! You are out of cards.");
+         JOptionPane.showMessageDialog(null, "You are all out of cards! You lose! :(");
       }
       else if (s.equals("opponent"))
       {

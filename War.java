@@ -1,3 +1,8 @@
+/* War Card Game GUI
+Created by Dallas Daniel
+CS 110
+Dec. 1, 2014
+*/
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -14,7 +19,7 @@ public class War extends JFrame
    private ImageIcon backCardLeft;
    private ImageIcon backCardRight;
    private ImageIcon back;
-   private JButton buttonFight;
+   private JButton buttonFight, buttonExitGame, buttonHelp;
    private JLabel backCardLabelLeft, backCardLabelRight, playerCardLabel, computerCardLabel;
    
    private JTextField playerCardsLeft, computerCardsLeft;
@@ -46,7 +51,7 @@ public class War extends JFrame
       
       setVisible(true);
       
-      JOptionPane.showMessageDialog(null, "Prepare for battle! \nYou have joined the card War! \n\nThe rules are the same as classic War. Aces however are low and there will be only one card placed facedown! \n\nHave fun!");
+      JOptionPane.showMessageDialog(null, "Prepare for battle! \nYou have joined the card War! \n\nThe rules are the same as classic War. \nAces however are low and there will be only one card placed facedown! \n\nHave fun!");
       
    }
    
@@ -54,11 +59,17 @@ public class War extends JFrame
    private void buildButtonPanel()
    {
       buttonFight = new JButton("Fight!");
+      buttonExitGame = new JButton("Exit Game");
+      buttonHelp = new JButton("Help");
       
       buttonFight.addActionListener(new PlayCardListener());
+      buttonHelp.addActionListener(new HelpListener());
+      buttonExitGame.addActionListener(new ExitGameListener());
       
       buttonPanel = new JPanel();
       buttonPanel.add(buttonFight);
+      buttonPanel.add(buttonHelp);
+      buttonPanel.add(buttonExitGame);
       buttonPanel.setBackground(new Color(128,0,128));
       
    }
@@ -174,6 +185,23 @@ public class War extends JFrame
                 playerCardsLeft.setText("Your Cards: " + (game.getPlayerCardsRemain() - 1));
                 computerCardsLeft.setText("Computer's Cards: " + (game.getComputerCardsRemain() - 1));
          }
+      }
+   }
+   // when help is pressed
+   public class HelpListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         JOptionPane.showMessageDialog(null, "HELP" + "\n\nPress Fight! To play cards and to continue the game"
+                                       + "\nPress Exit Game to quit" + "\nAces are low");
+      }
+   }
+   // when the exit game button is pressed
+   public class ExitGameListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         System.exit(0);
       }
    }
    
