@@ -9,8 +9,12 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
 
+// create the gui
 public class War extends JFrame
 {
+   // initialize all the variables
+   // includes:
+   // card backs, images, buttons, panels, labels, text fields, the game itself, and war state
    private static final String BACK = "cardPics(1)/back.jpg";
    private WarGame game;
    private JPanel buttonPanel, playerDeckPanel, computerDeckPanel, cardsPanel, counterPanel;
@@ -25,32 +29,41 @@ public class War extends JFrame
    private JTextField playerCardsLeft, computerCardsLeft;
    private String war = "nope";
    
-   
+   // war is called in main
    public War() throws IOException
    {
       game = new WarGame();
       
+      // how the gui is structured
       setLayout(new BorderLayout());
       setTitle("This. Is. War!");
       setSize(850, 400);
       setResizable(false);
       setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       
+      // create the panels and determine where they are located
+      
+      // button panel
       buildButtonPanel();
       add(buttonPanel, BorderLayout.PAGE_END);
       
+      // deck panel
       buildDecksPanel();
       add(playerDeckPanel, BorderLayout.LINE_START);
       add(computerDeckPanel, BorderLayout.LINE_END);
       
+      // counter panel
       buildCounterPanel();
       add(counterPanel, BorderLayout.PAGE_START);
       
+      // cards panels
       buildCardsPanel();
       add(cardsPanel, BorderLayout.CENTER);
       
+      // make sure that the user can actually SEE it
       setVisible(true);
       
+      // an opening message
       JOptionPane.showMessageDialog(null, "Prepare for battle! \nYou have joined the card War! \n\nThe rules are the same as classic War. \nAces however are low and there will be only one card placed facedown! \n\nHave fun!");
       
    }
@@ -123,6 +136,8 @@ public class War extends JFrame
    }
    
    // card listener
+   
+   // when the fight button is pressed, how it determines war state
    private class PlayCardListener implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
@@ -140,6 +155,7 @@ public class War extends JFrame
          
          if (war.equals("true"))
          {
+               // during war, displays two face down cards to represent the "pot"
                 playerCard = new ImageIcon(BACK);
                 playerCardLabel.setIcon(playerCard);
 
@@ -178,6 +194,7 @@ public class War extends JFrame
                 }
          }
          
+         // after a battle, calculate cards remaining, and continue
          if (war.equals("final"))
          {
                 war = "nope";
